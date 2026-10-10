@@ -41,7 +41,7 @@ app.get('/', (req, res) => {
           var target = input;
           if (!input.startsWith('http://') && !input.startsWith('https://')) {
             if (input.includes('.') && !input.includes(' ')) { target = 'https://' + input; }
-            else { target = 'https://duckduckgo.com' + encodeURIComponent(input); }
+            else { target = 'https://duckduckgo.com/?q=' + encodeURIComponent(input); }
           }
           document.getElementById('gas-loader').style.display = 'block';
           document.getElementById('p-bar').style.width = '60%';
@@ -57,8 +57,6 @@ app.get('/', (req, res) => {
 app.get('/proxy', async (req, res) => {
   let targetUrl = req.query.url;
   if (!targetUrl) return res.status(400).send('URLがありません');
-
-  // 【ハルくんのGASロジック完全移植！】
   // DuckDuckGoのリダイレクトURL（/l/?uddg=...）を検知したら、本物のURLを自動で引っこ抜く
   if (targetUrl.includes('duckduckgo.com') && targetUrl.includes('uddg=')) {
     try {
