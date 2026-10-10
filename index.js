@@ -41,7 +41,7 @@ app.get('/', (req, res) => {
           var target = input;
           if (!input.startsWith('http://') && !input.startsWith('https://')) {
             if (input.includes('.') && !input.includes(' ')) { target = 'https://' + input; }
-            else { target = 'https://duckduckgo.com/html/?q=' + encodeURIComponent(input); }
+            else { target = 'https://html.duckduckgo.com/html/?q=' + encodeURIComponent(input); }
           }
           document.getElementById('gas-loader').style.display = 'block';
           document.getElementById('p-bar').style.width = '60%';
