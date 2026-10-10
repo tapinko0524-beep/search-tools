@@ -62,7 +62,7 @@ app.get('/', (req, res) => {
               target = 'https://' + input;
             } else {
               // 検索ワードの場合はブロックされにくいDuckDuckGoのクエリへ変換
-              target = 'https://duckduckgo.com' + encodeURIComponent(input);
+              target = 'https://html.duckduckgo.com/html/?q=' + encodeURIComponent(input);
             }
           }
 
